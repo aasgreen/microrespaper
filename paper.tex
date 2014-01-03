@@ -27,11 +27,36 @@ This will contain the introduction. See scott's already very comprehensive notes
 Put in excel file with the resonator settings.
 \subsection*{Q}
 \subsubsection*{Unloaded vs Loaded Q}
-I am still having some trouble understanding how to extract the intrinsic Q from the loaded Q. Kippenburg's thesis and scott's notes talk about it a little, but I will need a little more theory background.
+Ujsing the input-output formalism~\cite{thesis:schliesser}, the transmission
+of the cavity-taper coupling, on resonance, can be shown to be:
+\[
+T = \left( \frac{1-K}{1+K}\right)^2
+,
+\]
+where $K=\frac{\tau_0}{\tau_{\mathrm{external}}}$ is the ratio of the 
+intrinsic photon-lifetime, and the photon-lifetime due to the coupling
+of the fiber-taper.
+
+We also know that,
+\[
+\frac{1}{\tau_\mathrm{total}} = \frac{1}{\tau_\mathrm{0}}+\frac{1}{\tau_\mathrm{external}}
+\]
+and since we can directly measure the linewidth from our scope trace, we can calculate the unloaded $Q_0 = \omega \tau_0$.
+
+Solving for $K$ gives:
+\[
+K = \left( \frac{1-T^{1/2}}{1+T^{1/2}}\right),
+\],
+and using this in our equation for $Q_0$ gives:
+\begin{equation}
+\label{eq:qnought}
+Q_0 = \frac{2}{1+T^{1/2}}
+\end{equation}
 \subsection*{Frequency Drift}
 
 \section*{Setup}
 This will contain pictures and descriptions of our current 
 setups.
-
+\bibliographystyle{plain}
+\bibliography{paper}
 \end{document}

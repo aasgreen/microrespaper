@@ -1,5 +1,11 @@
 \documentclass[reprint]{revtex4-1}
-\usepackage{hyperref,graphics,float}
+\usepackage{epsfig,hyperref,graphics,float,pgfplots}
+\usepgfplotslibrary{external}
+\tikzset{external/system call ={lualatex \tikzexternalcheckshellescape
+-halt-on-error
+-interaction=batchmode -jobname "\image" "\texsource"}}
+\tikzexternalize[prefix=figs/]
+\pgfplotsset{compat=1.5}
 
 \begin{document}
 \title{Using Micoresonators as frequency stabilizers for lasers}
@@ -57,6 +63,26 @@ Q_0 = \frac{2}{1+T^{1/2}}
 \section*{Setup}
 This will contain pictures and descriptions of our current 
 setups.
+\section*{Pound-Drever-Hall}
+\subsection*{Noise Characteristics}
+\tikzsetnextfilename{pdh}
+\begin{figure}[H]
+\begin{tikzpicture}
+\begin{semilogxaxis}[
+    width = \linewidth,
+    no markers,
+    enlarge x limits = false,
+    xlabel = {Frequency (Hz)},
+    ylabel = {$\frac{\mathrm{dBm}}{\sqrt{\mathrm{Hz}}}$},
+]
+%\addplot {x^3};
+\addplot file {../PDH/pdhnoise2.dat};
+\end{semilogxaxis}
+\end{tikzpicture}
+\caption{The noise characteristics of the PDH. This was obtained by directly beating the
+two 21 MHz signals against each other through the electronics.}
+\end{figure}
+The system was set up in the following way:
 \bibliographystyle{plain}
 \bibliography{paper}
 \end{document}
